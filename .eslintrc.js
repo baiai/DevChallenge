@@ -28,7 +28,6 @@ module.exports = {
     "browser": true
   },
   rules: {
-    semi: ['error', 'always'],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -38,7 +37,16 @@ module.exports = {
         "ts": "never",
         "tsx": "never"
       }
-   ]
+    ],
+    // comon
+    semi: ['error', 'always'],
+    'no-undef': 'off',
+   // react rules
+   'react/jsx-filename-extension': 'off',
+   'react/jsx-props-no-spreading': 'off',
+   'react/require-default-props': 'off',
+   // ts
+   'no-explicit-any': 'off'
   },
   plugins: [
     '@typescript-eslint',

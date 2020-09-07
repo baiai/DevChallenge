@@ -5,15 +5,33 @@
  */
 
 import React, { Component } from 'react';
+import { Provider } from 'mobx-react';
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
 
-import Form from "./js/components/from";
+import Store from './store';
 
-class App extends Component<{}, {}> {
-  render () {
+import { Navigation } from './navigation';
+import { Challenges } from './challenges';
+
+class App extends Component<any, any> {
+  store: Store;
+
+  constructor(props: any) {
+    super(props);
+
+    this.store = new Store();
+  }
+
+  render(): JSX.Element {
     return (
-      <>
-        <Form />
-      </>
+      <Provider {...this.store}>
+        <Router>
+          <Navigation />
+          <Challenges />
+        </Router>
+      </Provider>
     );
   }
 }
