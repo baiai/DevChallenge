@@ -9,3 +9,10 @@ devChallenge: https://devchallenges.io/
   为了提高打包效率，同时第三方库一般不会轻易改动，可以利用浏览器的缓存，减少页面加载时的体积。
 2. 每个challenge可以考虑做成动态加载
   首页加载的时候，各个challenge的代码没有必要加载。等点击进去之后再加载也不迟。做成懒加载可以避免随着challenge增多，代码体积的增大。
+
+## problems:
+1. react-router刷新之后就会报错，无法找到页面.
+  解决方案：
+    1. https://blog.csdn.net/zwkkkk1/article/details/83411071
+    2. https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually
+    3. https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually

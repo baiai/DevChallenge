@@ -1,0 +1,26 @@
+// 层级定义
+
+$z-index-list: (
+  (challenge, challengeTop),
+  (topLayer)
+);
+
+@function z($element) {
+  $z-index: null;
+  $sub-list-index: null;
+
+  @for $i from 1 through length($z-index-list) {
+    $sub-list: nth($z-index-list, $i);
+
+    @if index($sub-list, $element) {
+      $z-index: index($sub-list, $element);
+      $sub-list-index: $i;
+    }
+  }
+
+  @if $z-index {
+    @return $sub-list-index * 100 + $z-index;
+  } @else {
+    @error 'Missing element "#{$element}" in $z-index-list';
+  }
+}

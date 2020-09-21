@@ -1,0 +1,29 @@
+.nav-challenge-item {
+  width: 300px;
+  height: 400px;
+  border-radius: 5px;
+  text-align: center;
+  
+  .name {
+    font-size: 30px;
+    height: 200px;
+    line-height: 200px;
+    text-decoration: none;
+  }
+
+  .desc {
+    position: relative;
+    height: 200px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background: rgba(0, 0, 0, .4);
+  }
+
+  .desc-content {
+    height: 180px;
+    overflow: scroll;
+    font-size: 12px;
+    text-align: left;
+    color: white;
+  }
+}

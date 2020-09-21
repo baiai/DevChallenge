@@ -1,40 +1,52 @@
 import React from 'react';
-
-import {
-  Link,
-} from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+import {  } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  Link,
+  useLocation
+} from 'react-router-dom';
+import { Challenges } from '@/challenges';
+
 import { NavigationStore } from '.';
+import ChallengeItem from './challengeItem';
+import { CHALLENGE_LIST } from './constants';
+
 
 interface IProps {
   navigationStore?: NavigationStore
 }
 
 function Navigation(props: IProps): JSX.Element {
-  const { navigationStore } = props;
-  const { navigationVisible, toggleNavigationVisible } = navigationStore || {};
+  const location = useLocation();
+  const {
+    matchPath,
+    navigationVisible,
+    toggleNavigationVisible
+  } = props.navigationStore;
 
-  if (!navigationVisible) return null;
+  toggleNavigationVisible(matchPath === location.pathname);
 
-  const onAboutClick = (): void => {
-    toggleNavigationVisible(false);
+  const renderChallengeList = (): JSX.Element[] => {
+    return CHALLENGE_LIST.map((item) => {
+      return <ChallengeItem {...item} />;
+    })
   };
 
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about" onClick={onAboutClick}>About</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav>
+      {navigationVisible && (
+        <nav>
+          <ul>
+            {renderChallengeList()}
+          </ul>
+        </nav>
+      )}
+      
+      <Switch>
+        <Route path='/challenges/:challengeId' children={<Challenges />} />
+      </Switch>
     </div>
   );
 }

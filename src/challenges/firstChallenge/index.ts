@@ -1,9 +1,9 @@
-import FirstChallngeStore from './store';
+import FirstChallengeStore from './store';
 
-import FirstChallnge from './view';
+import FirstChallenge from './view';
 
-export default FirstChallnge;
+export default FirstChallenge;
 export {
-  FirstChallnge,
-  FirstChallngeStore,
+  FirstChallenge,
+  FirstChallengeStore,
 };

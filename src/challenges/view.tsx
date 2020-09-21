@@ -1,17 +1,18 @@
 import React from 'react';
 import {
-  Switch,
-  Route,
+  useParams
 } from 'react-router-dom';
+import { get } from 'lodash';
 
-import { FirstChallnge } from './firstChallenge';
+import { FirstChallenge } from './firstChallenge';
 
-export default function Challnges(): JSX.Element {
+export default function Challenges(): JSX.Element {
+  const challengeId = get(useParams(), 'challengeId', '');
+
   return (
-    <Switch>
-      <Route path="/about">
-        <FirstChallnge />
-      </Route>
-    </Switch>
+    <>
+      {(challengeId === '1') && <FirstChallenge />}
+      test
+    </>
   );
 }
