@@ -1,4 +1,4 @@
-.nav-challenge-item {
+.root {
   width: 300px;
   height: 400px;
   border-radius: 5px;
@@ -19,7 +19,7 @@
     background: rgba(0, 0, 0, .4);
   }
 
-  .desc-content {
+  .descContent {
     height: 180px;
     overflow: scroll;
     font-size: 12px;

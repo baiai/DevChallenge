@@ -14,6 +14,7 @@ import ChallengeItem from './challengeItem';
 import { CHALLENGE_LIST } from './constants';
 
 
+
 interface IProps {
   navigationStore?: NavigationStore
 }
@@ -22,11 +23,14 @@ function Navigation(props: IProps): JSX.Element {
   const location = useLocation();
   const {
     matchPath,
-    navigationVisible,
     toggleNavigationVisible
   } = props.navigationStore;
 
   toggleNavigationVisible(matchPath === location.pathname);
+
+  const {
+    navigationVisible,
+  } = props.navigationStore;
 
   const renderChallengeList = (): JSX.Element[] => {
     return CHALLENGE_LIST.map((item) => {
@@ -45,7 +49,7 @@ function Navigation(props: IProps): JSX.Element {
       )}
       
       <Switch>
-        <Route path='/challenges/:challengeId' children={<Challenges />} />
+        <Route path='/challenges' children={<Challenges />} />
       </Switch>
     </div>
   );

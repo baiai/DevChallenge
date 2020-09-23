@@ -5,24 +5,23 @@
  */
 
 import React from 'react';
-import { inject, observer } from 'mobx-react';
 import {
-  Switch,
-  Route,
   Link,
-  useLocation
 } from 'react-router-dom';
-import './style.scss';
+import s from './style.module.scss';
 
+interface IProps extends Navigation.ChallengeItem {
+  className?: string
+}
 
-function ChallengeItem (props: Navigation.ChallengeItem): JSX.Element {
+function ChallengeItem (props: IProps): JSX.Element {
   const { name, description, path, challengeLink } = props;
 
   return (
-    <li className='nav-challenge-item' key={path}>
-      <Link to={path} className='name'>{name}</Link>
-      <div className='desc'>
-        <p className='desc-content'>
+    <li className={s.root} key={path}>
+      <Link to={path} className={s.name}>{name}</Link>
+      <div className={s.desc}>
+        <p className={s.descContent}>
           {description}text
           <a
             target='_blank'

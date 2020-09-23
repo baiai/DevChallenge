@@ -29,7 +29,17 @@ module.exports = {
           // 将 JS 字符串生成为 style 节点
           'style-loader',
           // 将 CSS 转化成 CommonJS 模块
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                // css module 的基础配置
+                mode: 'local',
+                // 生产环境可以用[hash:base64]，类名会更短些
+                localIdentName: '[local]--[hash:base64:5]'
+              },
+            },
+          },
           // 将 Sass 编译成 CSS
           'sass-loader',
         ],
